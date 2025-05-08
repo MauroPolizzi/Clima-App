@@ -1,0 +1,43 @@
+import { Component, OnInit } from '@angular/core';
+
+
+@Component({
+  selector: 'app-widget-clima',
+  templateUrl: './widget-clima.component.html',
+  styleUrls: ['./widget-clima.component.scss']
+})
+export class WidgetClimaComponent  implements OnInit {
+
+  public fecha = this.getCurrentDateInfo();
+
+  constructor() { }
+
+  ngOnInit() { }
+ 
+  public getCurrentDateInfo(): { 
+    day: number; 
+    dayName: string;
+    month: number; 
+    monthName: string; 
+    year: number; 
+    fullDate: string; 
+    isoString: string 
+  } {
+    const now = new Date();
+  
+    const day = now.getDate(); // Día del mes
+    const month = now.getMonth() + 1; // Mes (0-11, por eso se suma 1)
+    const year = now.getFullYear(); // Año completo
+    const isoString = now.toISOString(); // Fecha y hora en formato ISO
+    
+    const daysOfWeek = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+    const monthsOfYear = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    const dayName = daysOfWeek[now.getDay()];
+    const monthName = monthsOfYear[month];
+    
+    const fullDate = `${day.toString()} de ${monthName} de ${year}`; // Formato D de montName de YYYY
+
+    return { day, dayName, month, monthName, year, fullDate, isoString };
+  }
+  
+}

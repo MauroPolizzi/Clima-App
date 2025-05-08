@@ -1,0 +1,24 @@
+
+.pastilla-forecast{
+    width: 45px;
+    height: 150px;
+    background-color: #4CAF50; /* color de fondo */
+    border-radius: 40px; /* redondeado completo */
+    //display: flex;
+    align-items: center;
+    //justify-content: center;
+    color: white;
+    //font-family: Arial, sans-serif;
+    //writing-mode: vertical-rl; /* texto en vertical */
+    text-align: center;
+    padding: 10px
+};
+
+.pastilla-title{
+    font-size: smaller;
+}
+
+img{
+    margin-top: 50%;
+    margin-bottom: 50%;
+}
