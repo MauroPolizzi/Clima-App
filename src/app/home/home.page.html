@@ -1,25 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      ClimaApp
-    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <section id="temperature-resume-info">
-    <div class="ion-text-center">
-      <h3>{{ city }}</h3>
-      <h1>{{ temperatura }}</h1>
-      <p>{{ temperatura_description }}</p>
-      <div>
-        <span class="ion-margin-horizontal">{{ temperatura_min }}</span>
-        <span class="ion-margin-horizontal">{{ temperatura_max }}</span>
-      </div>
-      <div>
-        <app-widget-clima></app-widget-clima>
-        <app-widget-weekly-forecast></app-widget-weekly-forecast>
-      </div>
-    </div>
-  </section>
+  <app-widget-info-general></app-widget-info-general>
+  <app-widget-clima></app-widget-clima>
+  <app-widget-weekly-forecast></app-widget-weekly-forecast>
 </ion-content>

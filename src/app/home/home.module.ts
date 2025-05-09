@@ -7,6 +7,7 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { WidgetClimaComponent } from "../components/widget-clima/widget-clima.component";
 import { WidgetWeeklyForecastComponent } from "../components/widget-weekly-forecast/widget-weekly-forecast.component";
+import { WidgetInfoGeneralComponent } from "../components/widget-info-general/widget-info-general.component";
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { WidgetWeeklyForecastComponent } from "../components/widget-weekly-forec
     IonicModule,
     HomePageRoutingModule,
     WidgetClimaComponent,
-    WidgetWeeklyForecastComponent
+    WidgetWeeklyForecastComponent,
+    WidgetInfoGeneralComponent
 ],
   declarations: [HomePage]
 })

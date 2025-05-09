@@ -8,7 +8,9 @@ import { IRootObject } from '../interfaces/IClimaApp.interfaces';
 })
 export class ClimaService {
 
-  private URL = `${ environment.URL_API }${ environment.API_KEY }`;
+  // Establecemos el parametro de unidad, que sera Celsius
+  private paramsUnits: string = '&units=metric'; 
+  private URL = `${ environment.URL_API }${ environment.API_KEY }${ this.paramsUnits }`;
 
   constructor( private http: HttpClient ) { }
 
