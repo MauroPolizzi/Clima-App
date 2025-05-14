@@ -26,7 +26,7 @@ export class WidgetClimaComponent  implements OnInit {
     const now = new Date();
   
     const day = now.getDate(); // Día del mes
-    const month = now.getMonth() + 1; // Mes (0-11, por eso se suma 1)
+    const month = now.getMonth(); // Mes (0-11, por eso se suma 1, deja de sumar 1, ya que tomamos del array de meses la posicion concreta)
     const year = now.getFullYear(); // Año completo
     const isoString = now.toISOString(); // Fecha y hora en formato ISO
     

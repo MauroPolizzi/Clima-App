@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IRootObject } from '../interfaces/IClimaApp.interfaces';
+import { IRootObject_GetWeeklyForecast, IRootObject_GetForCityAndContry } from '../interfaces/IClimaApp.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,20 @@ export class ClimaService {
 
   // Establecemos el parametro de unidad, que sera Celsius
   private paramsUnits: string = '&units=metric'; 
-  private URL = `${ environment.URL_API }${ environment.API_KEY }${ this.paramsUnits }`;
-
+  
   constructor( private http: HttpClient ) { }
-
-  public getTemperatureStandar() {
+  
+  /** Devuelve la temperatura estandar para el dia actual */
+  public getTemperatureStandarOfDay() : Observable<IRootObject_GetForCityAndContry> {
     
-    return this.http.get<IRootObject>(this.URL);
+    const URL_GetForCityAndCountry = `${ environment.API_ENDPOINT_GETFORCITYANDCOUNTRY }${ environment.API_KEY }${ this.paramsUnits }`;
+    return this.http.get<IRootObject_GetForCityAndContry>(URL_GetForCityAndCountry);
+  }
+
+  /** Devuleve el pronostico para los siguientes 5 dias */
+  public getWeeklyForecast() : Observable<IRootObject_GetWeeklyForecast> {
+    
+    const URL_GetWeeklyForeCast = `${ environment.API_ENDPOINT_GETWEEKLYFORECAST }${ environment.API_KEY }${ this.paramsUnits }`;
+    return this.http.get<IRootObject_GetWeeklyForecast>(URL_GetWeeklyForeCast);
   }
 }

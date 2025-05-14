@@ -17,7 +17,7 @@ export class WidgetInfoGeneralComponent  implements OnInit {
     
     constructor( private service: ClimaService ) { 
   
-      service.getTemperatureStandar().subscribe( resp => { 
+      this.service.getTemperatureStandarOfDay().subscribe( resp => { 
         this.temperatura = resp.main.temp;
         this.city = resp.name;
         this.temperatura_description = resp.weather[0].description;
@@ -25,7 +25,7 @@ export class WidgetInfoGeneralComponent  implements OnInit {
         this.temperatura_max = resp.main.temp_max;
         this.temperaturaFormat = `${this.temperatura}°`;
 
-        console.log(resp);
+        //console.log(resp);
        });
     }
 

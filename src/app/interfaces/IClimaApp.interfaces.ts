@@ -1,7 +1,7 @@
 /**
- * Interface que contiene todas las demas interfaces y cuenta con parametros internos de la API de openweathermap 
+ * Interface que contiene todos los campos que devuelve el end point 'API_ENDPOINT_GETFORCITYANDCOUNTRY' (enviroment.ts), cuenta con parametros internos de la API de openweathermap 
 */
-export interface IRootObject {
+export interface IRootObject_GetForCityAndContry {
   coord: ICoord;
   weather: IWeather[];
   base: string;
@@ -45,6 +45,9 @@ export interface ISys {
    * Hora del atardecer, Unix, UTC
   */
   sunset: number;
+
+  /** Parte del dia (n - night, d - day) */
+  pod: string;
 }
 
 /**
@@ -157,4 +160,39 @@ export interface ICoord {
    * Latitud de la City
   **/
   lat: number;
+}
+
+
+/**
+ * Interface que contiene todos los campos que devuelve el end point 'API_ENDPOINT_GETWEEKLYFORECAST' (enviroment.ts), cuenta con parametros internos de la API de openweathermap 
+*/
+export interface IRootObject_GetWeeklyForecast {
+  list: IList[];
+  city: ICity;
+}
+
+export interface ICity {
+  id: number;
+  name: string;
+  coord: ICoord;
+  country: string;
+  population: number;
+  timezone: number;
+  /** Hora de salida del sol */
+  sunrise: number;
+  /** Hora de puesta del sol */
+  sunset: number;
+}
+
+export interface IList {
+  dt: number;
+  main: IMain;
+  weather: IWeather[];
+  clouds: IClouds;
+  wind: IWind;
+  visibility: number;
+  /** Probabilidad de precipitación. Los valores del parámetro varían entre 0 y 1, donde 0 equivale al 0 % y 1 al 100 %. */
+  pop: number;
+  sys: ISys;
+  dt_txt: string;
 }
