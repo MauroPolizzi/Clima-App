@@ -6,14 +6,14 @@
   <ion-card-content class="ion-text-center">
     <ion-grid>
       <ion-row>
-        <ion-col>
+        <ion-col *ngFor="let item of reurnDayAndTemperature()">
           <div class="pastilla-forecast">
-            <span class="pastilla-title">Lun</span>
-            <img src="../../../assets/weather-icons/hail.png" alt="">
-            <span class="pastilla-temperature">15°</span>
+            <span class="pastilla-title">{{ item.substring(0, 3) }}</span>
+            <img src="https://openweathermap.org/img/wn/04n@2x.png" alt="">
+            <span class="pastilla-temperature">{{ item.split('-')[1] }}</span>
           </div>
         </ion-col>
-        <ion-col>
+        <!-- <ion-col>
           <div class="pastilla-forecast">
             <span class="pastilla-title">Mar</span>
             <img src="../../../assets/weather-icons/temperature-cold.png" alt="">
@@ -40,7 +40,7 @@
             <img src="../../../assets/weather-icons/rainbow.png" alt="">
             <span class="pastilla-temperature">15°</span>
           </div>
-        </ion-col>
+        </ion-col> -->
       </ion-row>
     </ion-grid>
   </ion-card-content>
