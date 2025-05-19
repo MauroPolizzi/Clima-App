@@ -3,6 +3,7 @@ import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonGrid, IonCo
 import { NgFor } from '@angular/common';
 import { IList, IRootObject_GetWeeklyForecast } from 'src/app/interfaces/IClimaApp.interfaces';
 import { ClimaService } from 'src/app/services/clima.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-widget-weekly-forecast',
@@ -14,16 +15,32 @@ export class WidgetWeeklyForecastComponent implements OnInit {
 
   public dates: string[] = [];
   public averanges: number[] = [];
+  public descriptionIcon: string[] = [];
 
   constructor(private service: ClimaService) { 
 
     this.service.getWeeklyForecast()
-      .subscribe( (resp: IRootObject_GetWeeklyForecast) => { console.log(this.CalculatePromedioTemperatureOfDay( this.groupedByDate(resp.list) )) });
+      .subscribe( (resp: IRootObject_GetWeeklyForecast) => { 
+        this.calculatePromedioTemperatureOfDay( this.groupedByDate(resp.list) );
+        this.getDescriptionIcon(resp.list);
+      });
   }
 
   ngOnInit() {}
 
-  /** Devuelve un array en formato 'day-temperature' */
+  public getDescriptionIcon(list: IList[]) : string[] {
+
+    for (let index = 0; index < list.length; index += 8) {
+      const item = list[index];
+      const icon = `${ environment.URL_ICON }${ item.weather[0].icon }@2x.png`; //description.replace(/\s+/g, '');
+      this.descriptionIcon.push(icon);
+    }
+
+    console.log(this.descriptionIcon)
+    return this.descriptionIcon;
+  }
+
+  /** Devuelve un array en formato 'day-temperature-icon' */
   public reurnDayAndTemperature() : string[]{
     const result: string[] = [];
     let day: string = '';
@@ -32,8 +49,9 @@ export class WidgetWeeklyForecastComponent implements OnInit {
     for (let index = 0; index < this.dates.length; index++) {
       day = this.getDayOfWeek(this.dates[index]);
       averange = parseFloat(this.averanges[index].toFixed(0));
-
-      result.push(`${ day }-${ averange }°`);
+      
+      // Le concatenamos el nombre de los iconos de OpenWeather
+      result.push(`${ day }-${ averange }°-${ this.descriptionIcon[index] }`);
     }
 
     return result;
@@ -41,7 +59,7 @@ export class WidgetWeeklyForecastComponent implements OnInit {
 
   /** Devuelve el dia resumido de la semana, segun la fecha indicada por parametro */
   private getDayOfWeek(fechaStr: string): string {
-    const diasSemana = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+    const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
 
     const fecha = new Date(fechaStr);
     const dia = fecha.getDay(); // 0 = domingo, 1 = lunes, ..., 6 = sábado
@@ -68,7 +86,7 @@ export class WidgetWeeklyForecastComponent implements OnInit {
   }
 
   /** Devuelve un array de fechas y un array de promedios de la temperatura */
-  private CalculatePromedioTemperatureOfDay( groupDate: any[] ): { dates: string[]; averanges: number[]; } {
+  private calculatePromedioTemperatureOfDay( groupDate: any[] ): { dates: string[]; averanges: number[]; } {
     
     let dates: string[] = []; // Obtenemos las fechas
     let averanges: number[] = []; // Array de promedios de temperatura por fecha

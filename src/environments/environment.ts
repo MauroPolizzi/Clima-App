@@ -12,7 +12,9 @@ export const environment = {
    * Con el params cnt definimos el limite de objetos dentro de la lista devuelta.
   */
   API_ENDPOINT_GETWEEKLYFORECAST: 'https://pro.openweathermap.org/data/2.5/forecast?q=London&cnt=40&appid=',
-  API_KEY: '974a07281e5b6d25f5d9c7a55caa9743'
+  API_KEY: '974a07281e5b6d25f5d9c7a55caa9743',
+
+  URL_ICON: 'https://openweathermap.org/img/wn/',
 };
 
 /*

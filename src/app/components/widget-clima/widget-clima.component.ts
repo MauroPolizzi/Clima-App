@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IRootObject_GetForCityAndContry } from 'src/app/interfaces/IClimaApp.interfaces';
 import { ClimaService } from 'src/app/services/clima.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -11,11 +12,11 @@ import { ClimaService } from 'src/app/services/clima.service';
 export class WidgetClimaComponent  implements OnInit {
 
   public fecha = this.getCurrentDateInfo();
-  public icon: string = '';
+  public icon: string = environment.URL_ICON;
 
   constructor(private service: ClimaService) { 
 
-    this.service.getTemperatureStandarOfDay().subscribe( (resp: IRootObject_GetForCityAndContry) => this.icon = `${ service.iconInfo }${ resp.weather[0].icon }@2x.png`);
+    this.service.getTemperatureStandarOfDay().subscribe( (resp: IRootObject_GetForCityAndContry) => this.icon += `${ resp.weather[0].icon }@2x.png`);
   }
 
   ngOnInit() { }

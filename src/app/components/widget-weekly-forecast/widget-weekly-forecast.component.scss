@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
+
+ion-card {
+    background: transparent;
+}
 .pastilla-forecast{
     //width: 20%;
     //height: 150px;
-    background-color: #4CAF50; /* color de fondo */
+    //background-color: #4CAF50; /* color de fondo */
+    font-family: 'Rubik', sans-serif;
     border-radius: 40px; /* redondeado completo */
+    border: 0.5px gray solid;
     //display: flex;
     align-items: center;
     //justify-content: center;
@@ -11,7 +18,7 @@
     //font-family: Arial, sans-serif;
     //writing-mode: vertical-rl; /* texto en vertical */
     text-align: center;
-    padding: 10px
+    padding: 10px;
 };
 
 .pastilla-title{

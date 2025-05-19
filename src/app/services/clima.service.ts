@@ -9,8 +9,6 @@ import { IRootObject_GetWeeklyForecast, IRootObject_GetForCityAndContry } from '
 })
 export class ClimaService {
 
-  public iconInfo: string = 'https://openweathermap.org/img/wn/';
-
   // Establecemos el parametro de unidad, que sera Celsius
   private paramsUnits: string = '&units=metric'; 
   

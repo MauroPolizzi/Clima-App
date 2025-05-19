@@ -9,38 +9,10 @@
         <ion-col *ngFor="let item of reurnDayAndTemperature()">
           <div class="pastilla-forecast">
             <span class="pastilla-title">{{ item.substring(0, 3) }}</span>
-            <img src="https://openweathermap.org/img/wn/04n@2x.png" alt="">
+            <img [src]= "item.split('-')[2]" alt="">
             <span class="pastilla-temperature">{{ item.split('-')[1] }}</span>
           </div>
         </ion-col>
-        <!-- <ion-col>
-          <div class="pastilla-forecast">
-            <span class="pastilla-title">Mar</span>
-            <img src="../../../assets/weather-icons/temperature-cold.png" alt="">
-            <span class="pastilla-temperature">36°</span>
-          </div>
-        </ion-col>
-        <ion-col>
-          <div class="pastilla-forecast">
-            <span class="pastilla-title">Mie</span>
-            <img src="../../../assets/weather-icons/sun.png" alt="">
-            <span class="pastilla-temperature">20°</span>
-          </div>
-        </ion-col>
-        <ion-col>
-          <div class="pastilla-forecast">
-            <span class="pastilla-title">Jue</span>
-            <img src="../../../assets/weather-icons/starry-night.png" alt="">
-            <span class="pastilla-temperature">25°</span>
-          </div>
-        </ion-col>
-        <ion-col>
-          <div class="pastilla-forecast">
-            <span class="pastilla-title">Vie</span>
-            <img src="../../../assets/weather-icons/rainbow.png" alt="">
-            <span class="pastilla-temperature">15°</span>
-          </div>
-        </ion-col> -->
       </ion-row>
     </ion-grid>
   </ion-card-content>
