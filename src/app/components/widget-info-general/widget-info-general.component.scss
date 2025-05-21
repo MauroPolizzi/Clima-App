@@ -4,6 +4,13 @@ div{
     font-family: 'Rubik', sans-serif;
 }
 
+#temperature-resume-info {
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .city-name{
     font-size: 1.8rem;
 }

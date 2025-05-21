@@ -3,6 +3,7 @@ import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonGrid, IonCo
 import { NgFor } from '@angular/common';
 import { IList, IRootObject_GetWeeklyForecast } from 'src/app/interfaces/IClimaApp.interfaces';
 import { ClimaService } from 'src/app/services/clima.service';
+import { DatesService } from 'src/app/services/dates.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -17,11 +18,11 @@ export class WidgetWeeklyForecastComponent implements OnInit {
   public averanges: number[] = [];
   public descriptionIcon: string[] = [];
 
-  constructor(private service: ClimaService) { 
+  constructor(private climaService: ClimaService, private datesService: DatesService) { 
 
-    this.service.getWeeklyForecast()
+    this.climaService.getWeeklyForecast()
       .subscribe( (resp: IRootObject_GetWeeklyForecast) => { 
-        this.calculatePromedioTemperatureOfDay( this.groupedByDate(resp.list) );
+        this.calculatePromedioTemperatureOfDay( this.datesService.groupedByDate(resp.list) );
         this.getDescriptionIcon(resp.list);
       });
   }
@@ -36,7 +37,6 @@ export class WidgetWeeklyForecastComponent implements OnInit {
       this.descriptionIcon.push(icon);
     }
 
-    console.log(this.descriptionIcon)
     return this.descriptionIcon;
   }
 
@@ -47,7 +47,7 @@ export class WidgetWeeklyForecastComponent implements OnInit {
     let averange: number = 0;
 
     for (let index = 0; index < this.dates.length; index++) {
-      day = this.getDayOfWeek(this.dates[index]);
+      day = this.datesService.getDayOfWeek(this.dates[index]);
       averange = parseFloat(this.averanges[index].toFixed(0));
       
       // Le concatenamos el nombre de los iconos de OpenWeather
@@ -55,34 +55,6 @@ export class WidgetWeeklyForecastComponent implements OnInit {
     }
 
     return result;
-  }
-
-  /** Devuelve el dia resumido de la semana, segun la fecha indicada por parametro */
-  private getDayOfWeek(fechaStr: string): string {
-    const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-
-    const fecha = new Date(fechaStr);
-    const dia = fecha.getDay(); // 0 = domingo, 1 = lunes, ..., 6 = sábado
-  
-    return diasSemana[dia].substring(0, 3);
-  }
-
-  /** Agrupa los items por fecha y devuelve un objeto con la fecha y una array de IList[]*/
-  private groupedByDate(listWeather: IList[]) {
-    
-    const agrupado: { [fecha: string]: IList[] } = {};
-    for (const item of listWeather) {
-      const fecha = item.dt_txt.split(" ")[0];
-      if (!agrupado[fecha]) {
-        agrupado[fecha] = [];
-      }
-      agrupado[fecha].push(item);
-    }
-
-    return Object.entries(agrupado).map(([fecha, items]) => ({
-      fecha, 
-      items
-    }));
   }
 
   /** Devuelve un array de fechas y un array de promedios de la temperatura */
@@ -93,7 +65,7 @@ export class WidgetWeeklyForecastComponent implements OnInit {
     let averange: number = 0;
 
     for (const item of groupDate) {
-      dates.push(item.fecha);
+      dates.push(item.date);
 
       // Sumamos la temperatura por agrupacion de fecha
       for (const list of item.items){
