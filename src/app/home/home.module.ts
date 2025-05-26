@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
+import { HomeClimaComponent } from '../components/home-clima/home-clima.component';
 import { WidgetClimaComponent } from "../components/widget-clima/widget-clima.component";
 import { WidgetWeeklyForecastComponent } from "../components/widget-weekly-forecast/widget-weekly-forecast.component";
 import { WidgetInfoGeneralComponent } from "../components/widget-info-general/widget-info-general.component";
@@ -16,6 +17,7 @@ import { WidgetInfoGeneralComponent } from "../components/widget-info-general/wi
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
+    HomeClimaComponent,
     WidgetClimaComponent,
     WidgetWeeklyForecastComponent,
     WidgetInfoGeneralComponent

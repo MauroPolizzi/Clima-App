@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, input, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { IRootObject_GetForCityAndContry } from 'src/app/interfaces/IClimaApp.interfaces';
 import { ClimaService } from 'src/app/services/clima.service';
 
 @Component({
@@ -7,6 +9,8 @@ import { ClimaService } from 'src/app/services/clima.service';
   styleUrls: ['./widget-info-general.component.scss'],
 })
 export class WidgetInfoGeneralComponent  implements OnInit {
+
+  public info_GetForCityAndContry = input.required();
 
   public temperatura: number = 0;
   public temperaturaFormat: string = '';
@@ -29,5 +33,5 @@ export class WidgetInfoGeneralComponent  implements OnInit {
 
   ngOnInit() {
   }
-
+  
 }
