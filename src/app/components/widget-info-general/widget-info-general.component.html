@@ -1,11 +1,11 @@
 <section id="temperature-resume-info">
   <div class="ion-text-center">
-    <h3 class="city-name"><b>{{ city }}</b></h3>
-    <h1 class="city-temperature"><b>{{ temperaturaFormat }}</b></h1>
-    <p class="temperature-description"><b>{{ temperatura_description }}</b></p>
+    <h3 class="city-name"><b>{{ info_GetForCityAndContry.city }}</b></h3>
+    <h1 class="city-temperature"><b>{{ info_GetForCityAndContry.temperaturaFormat }}</b></h1>
+    <p class="temperature-description"><b>{{ info_GetForCityAndContry.temperatura_description }}</b></p>
     <div>
-      <span class="temperature-min ion-margin-horizontal"><b>{{ temperatura_min }}°</b></span>
-      <span class="temperature-max ion-margin-horizontal"><b>{{ temperatura_max }}°</b></span>
+      <span class="temperature-min ion-margin-horizontal"><b>{{ info_GetForCityAndContry.temperatura_min }}°</b></span>
+      <span class="temperature-max ion-margin-horizontal"><b>{{ info_GetForCityAndContry.temperatura_max }}°</b></span>
     </div>
   </div>
 </section>
