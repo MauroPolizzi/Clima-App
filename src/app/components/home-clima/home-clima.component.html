@@ -1,8 +1,19 @@
-<ion-refresher slot="fixed" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200" (ionRefresh)="handleRefresh($event)">
-  <ion-refresher-content></ion-refresher-content>
-</ion-refresher>
-<div *ngIf="infoForCityAndContry | async as info_GetForCityAndContry">
-  <app-widget-info-general [info_GetForCityAndContry]="info_GetForCityAndContry"></app-widget-info-general>
-  <app-widget-clima></app-widget-clima>
-  <app-widget-weekly-forecast></app-widget-weekly-forecast>
-</div>
+<ion-content>
+  <ion-refresher slot="fixed" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200" (ionRefresh)="loadWeatherData($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
+  <!-- Mostrar loading inicial (solo la primera vez si no hay refresher) -->
+  <!-- Spinner de carga inicial (mínimo 2 segundos) -->
+  <div *ngIf="loading && !weatherData" class="spinner-container">
+    <ion-spinner class="custom-loading" trigger="open-loading"></ion-spinner>
+    <p class="spinner-description">Loading...</p>
+  </div>
+  
+  <!-- Cargamos el contenido de los componentes hijos, por las condiciones especificadas-->
+  <ion-content *ngIf="!loading && weatherData">
+    <app-widget-info-general [info_GetForCityAndContry]="weatherData"></app-widget-info-general>
+    <app-widget-clima></app-widget-clima>
+    <app-widget-weekly-forecast></app-widget-weekly-forecast>
+  </ion-content>
+</ion-content>
