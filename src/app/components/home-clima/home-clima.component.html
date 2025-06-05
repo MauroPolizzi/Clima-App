@@ -5,7 +5,7 @@
   
   <!-- Mostrar loading inicial (solo la primera vez si no hay refresher) -->
   <!-- Spinner de carga inicial (mínimo 2 segundos) -->
-  <div *ngIf="loading && !weatherData" class="spinner-container">
+  <div *ngIf="loading && !weatherData" class="spinner-container animate__animated animate__fadeInUpBig">
     <ion-spinner class="custom-loading" trigger="open-loading"></ion-spinner>
     <p class="spinner-description">Loading...</p>
   </div>
