@@ -6,13 +6,14 @@ import { ClimaService } from 'src/app/services/clima.service';
 import { WidgetClimaComponent } from '../widget-clima/widget-clima.component';
 import { WidgetInfoGeneralComponent } from '../widget-info-general/widget-info-general.component';
 import { WidgetWeeklyForecastComponent } from '../widget-weekly-forecast/widget-weekly-forecast.component';
+import { WidgetSunComponent } from '../widget-sun/widget-sun.component';
 import { IRootObject_GetForCityAndContry } from 'src/app/interfaces/IClimaApp.interfaces';
 
 @Component({
   selector: 'app-home-clima',
   templateUrl: './home-clima.component.html',
   styleUrls: ['./home-clima.component.scss'],
-  imports: [CommonModule, WidgetClimaComponent, WidgetInfoGeneralComponent, WidgetWeeklyForecastComponent, IonContent, IonRefresher, IonRefresherContent, IonSpinner]
+  imports: [CommonModule, WidgetClimaComponent, WidgetInfoGeneralComponent, WidgetWeeklyForecastComponent, WidgetSunComponent, IonContent, IonRefresher, IonRefresherContent, IonSpinner]
 })
 export class HomeClimaComponent  implements OnInit {
 

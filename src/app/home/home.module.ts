@@ -9,6 +9,7 @@ import { HomeClimaComponent } from '../components/home-clima/home-clima.componen
 import { WidgetClimaComponent } from "../components/widget-clima/widget-clima.component";
 import { WidgetWeeklyForecastComponent } from "../components/widget-weekly-forecast/widget-weekly-forecast.component";
 import { WidgetInfoGeneralComponent } from "../components/widget-info-general/widget-info-general.component";
+import { WidgetSunComponent } from '../components/widget-sun/widget-sun.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { WidgetInfoGeneralComponent } from "../components/widget-info-general/wi
     HomeClimaComponent,
     WidgetClimaComponent,
     WidgetWeeklyForecastComponent,
-    WidgetInfoGeneralComponent
+    WidgetInfoGeneralComponent,
+    WidgetSunComponent
 ],
   declarations: [HomePage]
 })
