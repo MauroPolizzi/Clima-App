@@ -1,11 +1,20 @@
-<ion-card class="animate__animated animate__fadeInUpBig">
-  <ion-card-header>
-    <ion-card-subtitle class="ion-text-left">Sunrise</ion-card-subtitle>
-  </ion-card-header>
+<ion-card class="sun-card">
+  <ion-card-content>
+    <div class="sun-label">
+      <ion-icon name="sunny-outline" class="ion-margin-end" color="dark"></ion-icon>
+      <span>SUNRISE</span>
+    </div>
+    <div class="sun-time">{{ sunrise }}</div>
 
-  <ion-card-content class="ion-text-center">
-    <h3>5:28 AM</h3>
-    <canvas id="mychart"></canvas>
-    <p>Sunset: 7:25 PM</p>
+    <svg viewBox="0 0 600 200" class="chart">
+      <path d="M 0 150 Q 150 30 300 60 T 600 150" fill="none" stroke="#009CAE" stroke-width="4" />
+      <circle cx="100" cy="100" r="15" fill="#ec6e4c" stroke="#ec6e4c" stroke-width="4" />
+      <line x1="0" y1="150" x2="600" y2="150" stroke="#4b5563" stroke-width="1" />
+    </svg>
+
+    <div class="sunset-time">
+      <ion-icon name="partly-sunny-outline" class="ion-margin-end" color="dark"></ion-icon>
+      <span>SUNSET: {{ sunset }}</span>
+    </div>
   </ion-card-content>
 </ion-card>
