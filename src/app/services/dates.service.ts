@@ -61,4 +61,23 @@ export class DatesService {
       items
     }));
   }
+
+  /** Convierte la hora (Unix timestamp) que trae la api de opneWeatherMap a GMT-3*/
+  public convertUnixToGMT3(unixTimestamp: number): string {
+   
+    // Convertimos el timestamp Unix (en segundos) a milisegundos
+    const dateUTC = new Date(unixTimestamp * 1000);
+  
+    // Ajuste manual a GMT-3
+    const utcHour = dateUTC.getUTCHours();
+    const gmt3Hour24 = (utcHour - 3 + 24) % 24;
+    const minutes = dateUTC.getUTCMinutes();
+  
+    // Conversión a formato 12 horas
+    const period = gmt3Hour24 >= 12 ? 'PM' : 'AM';
+    const hour12 = gmt3Hour24 % 12 === 0 ? 12 : gmt3Hour24 % 12;
+  
+    // Devolver formato "HH:MM AM/PM"
+    return `${hour12.toString().padStart(1)}:${minutes.toString().padStart(2, '0')} ${period}`;
+  }
 }

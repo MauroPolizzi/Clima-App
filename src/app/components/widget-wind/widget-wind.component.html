@@ -1,0 +1,26 @@
+<ion-card class="wind-card">
+  <ion-card-content>
+    <div class="wind-label">
+      <ion-icon name="leaf-outline" color="dark"></ion-icon>
+      <ion-card-subtitle>WIND</ion-card-subtitle>
+    </div>
+    <svg viewBox="0 0 200 200" class="wind-compass">
+      <circle cx="100" cy="100" r="80" stroke="#009CAE" stroke-width="4" fill="none" />
+      <text x="100" y="30" text-anchor="middle" fill="black" font-size="30">N</text>
+      <text x="100" y="190" text-anchor="middle" fill="black" font-size="30">S</text>
+      <text x="20" y="105" text-anchor="middle" fill="black" font-size="30">W</text>
+      <text x="180" y="105" text-anchor="middle" fill="black" font-size="30">E</text>
+
+      <line x1="100" y1="100" x2="150" y2="100" stroke="black" stroke-width="3" marker-end="url(#arrow)" />
+
+      <text x="100" y="90" text-anchor="middle" fill="black" font-size="40" font-weight="bold">{{ windSpeed }}</text>
+      <text x="100" y="130" text-anchor="middle" fill="black" font-size="20">km/h</text>
+
+      <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+          <path d="M0,0 L0,6 L9,3 z" fill="black" />
+        </marker>
+      </defs>
+    </svg>
+  </ion-card-content>
+</ion-card>

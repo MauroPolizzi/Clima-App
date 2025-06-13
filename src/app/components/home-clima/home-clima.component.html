@@ -15,6 +15,17 @@
     <app-widget-info-general [info_GetForCityAndContry]="weatherData"></app-widget-info-general>
     <app-widget-clima></app-widget-clima>
     <app-widget-weekly-forecast></app-widget-weekly-forecast>
-    <app-widget-sun></app-widget-sun>
+    <app-widget-sun [sunrise]="sunrise" [sunset]="sunset"></app-widget-sun>
+    <!-- Seccion de los componentes en grilla-->
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <app-widget-humidity></app-widget-humidity>
+        </ion-col>
+        <ion-col>
+          <app-widget-wind [windSpeed]="windSpeed"></app-widget-wind> 
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-content>
 </ion-content>

@@ -1,19 +1,22 @@
-import { IonContent, IonRefresher, IonRefresherContent, IonSpinner } from '@ionic/angular/standalone';
+import { IonContent, IonRefresher, IonRefresherContent, IonSpinner, IonGrid, IonRow, IonCol } from '@ionic/angular/standalone';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { finalize, forkJoin, map, Observable, timer } from 'rxjs';
 import { ClimaService } from 'src/app/services/clima.service';
+import { DatesService } from 'src/app/services/dates.service';
 import { WidgetClimaComponent } from '../widget-clima/widget-clima.component';
 import { WidgetInfoGeneralComponent } from '../widget-info-general/widget-info-general.component';
 import { WidgetWeeklyForecastComponent } from '../widget-weekly-forecast/widget-weekly-forecast.component';
 import { WidgetSunComponent } from '../widget-sun/widget-sun.component';
+import { WidgetHumidityComponent } from '../widget-humidity/widget-humidity.component';
+import { WidgetWindComponent } from '../widget-wind/widget-wind.component';
 import { IRootObject_GetForCityAndContry } from 'src/app/interfaces/IClimaApp.interfaces';
 
 @Component({
   selector: 'app-home-clima',
   templateUrl: './home-clima.component.html',
   styleUrls: ['./home-clima.component.scss'],
-  imports: [CommonModule, WidgetClimaComponent, WidgetInfoGeneralComponent, WidgetWeeklyForecastComponent, WidgetSunComponent, IonContent, IonRefresher, IonRefresherContent, IonSpinner]
+  imports: [CommonModule, WidgetClimaComponent, WidgetInfoGeneralComponent, WidgetWeeklyForecastComponent, WidgetSunComponent, WidgetHumidityComponent, WidgetWindComponent, IonContent, IonRefresher, IonRefresherContent, IonSpinner, IonGrid, IonRow, IonCol]
 })
 export class HomeClimaComponent  implements OnInit {
 
@@ -27,14 +30,21 @@ export class HomeClimaComponent  implements OnInit {
     city: string;
   };
 
-  constructor(private service: ClimaService) { }
+  // Propiedades que pasaremos al widget-sun.component
+  public sunrise: string = '';
+  public sunset: string = '';
+
+  // Propiedad que pasaremos al widget-wind.component
+  public windSpeed: number = 0;
+
+  constructor(private climaService: ClimaService, private dateServie: DatesService) { }
   
   ngOnInit() { this.loadWeatherData() }
 
   public loadWeatherData(event?: any): void {
     if (!event) this.loading = true;
 
-    const weather: Observable<any> = this.service.getTemperatureStandarOfDay()
+    const weather: Observable<any> = this.climaService.getTemperatureStandarOfDay()
       .pipe(
         map((resp: IRootObject_GetForCityAndContry) => ({
           temperature: parseFloat(resp.main.temp.toFixed(0)),
@@ -43,6 +53,9 @@ export class HomeClimaComponent  implements OnInit {
           temperatura_min: parseFloat(resp.main.temp_min.toFixed(0)),
           temperatura_max: parseFloat(resp.main.temp_max.toFixed(0)),
           city: resp.name,
+          sunrise: this.dateServie.convertUnixToGMT3(resp.sys.sunrise),
+          sunset: this.dateServie.convertUnixToGMT3(resp.sys.sunset),
+          windSpeed: resp.wind.speed
         })),
       )
       
@@ -60,7 +73,12 @@ export class HomeClimaComponent  implements OnInit {
           })
         )
       .subscribe({
-        next: ([data]) => this.weatherData = data,
+        next: ([data]) => {
+          this.weatherData = data;
+          this.sunrise = data.sunrise,
+          this.sunset = data.sunset,
+          this.windSpeed = data.windSpeed
+        },
         error: (err) => {
           console.error('Error al cargar datos del clima', err);
         }
