@@ -37,6 +37,9 @@ export class HomeClimaComponent  implements OnInit {
   // Propiedad que pasaremos al widget-wind.component
   public windSpeed: number = 0;
 
+  // Propiedad que pasaremos al widget-humility.component
+  public humility: number = 0;
+
   constructor(private climaService: ClimaService, private dateServie: DatesService) { }
   
   ngOnInit() { this.loadWeatherData() }
@@ -55,7 +58,8 @@ export class HomeClimaComponent  implements OnInit {
           city: resp.name,
           sunrise: this.dateServie.convertUnixToGMT3(resp.sys.sunrise),
           sunset: this.dateServie.convertUnixToGMT3(resp.sys.sunset),
-          windSpeed: resp.wind.speed
+          windSpeed: resp.wind.speed,
+          humility: resp.main.humidity
         })),
       )
       
@@ -77,7 +81,8 @@ export class HomeClimaComponent  implements OnInit {
           this.weatherData = data;
           this.sunrise = data.sunrise,
           this.sunset = data.sunset,
-          this.windSpeed = data.windSpeed
+          this.windSpeed = data.windSpeed,
+          this.humility = data.humility
         },
         error: (err) => {
           console.error('Error al cargar datos del clima', err);

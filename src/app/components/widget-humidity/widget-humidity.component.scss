@@ -1,3 +1,25 @@
-ion-card {
-    background-color: transparent;
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+.humility-card {
+    font-family: 'Rubik', sans-serif;
+    background: transparent;
+    border-radius: 1.25rem;
+    color: black;
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    max-height: 200px;
+}
+
+.humility-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+.humility-description {
+    margin-top: 1.5rem;
 }

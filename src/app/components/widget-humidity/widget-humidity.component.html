@@ -1,6 +1,13 @@
-<ion-card>
+<ion-card class="humility-card">
   <ion-card-content>
-      <ion-icon name="water-outline" class="ion-margin-end" color="dark"></ion-icon>
-      <span>Humility: 90%</span>
+    <div class="humility-label">
+      <ion-icon name="water-outline" color="dark"></ion-icon>
+      <ion-card-subtitle>HUMILITY</ion-card-subtitle>
+    </div>
+    <h1>{{ humility }}%</h1>
+    <div class="humility-description">
+      <span *ngIf="humility >= 50">The dew point is high</span>
+      <span *ngIf="humility < 50">The dew point is low</span>
+    </div>  
   </ion-card-content>
 </ion-card>

@@ -14,15 +14,30 @@
   <ion-content *ngIf="!loading && weatherData">
     <app-widget-info-general [info_GetForCityAndContry]="weatherData"></app-widget-info-general>
     <app-widget-clima></app-widget-clima>
-    <app-widget-weekly-forecast></app-widget-weekly-forecast>
-    <app-widget-sun [sunrise]="sunrise" [sunset]="sunset"></app-widget-sun>
+    
     <!-- Seccion de los componentes en grilla-->
     <ion-grid>
       <ion-row>
         <ion-col>
-          <app-widget-humidity></app-widget-humidity>
+          <app-widget-weekly-forecast></app-widget-weekly-forecast>
         </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+    <ion-grid>
+      <ion-row>
         <ion-col>
+          <app-widget-sun [sunrise]="sunrise" [sunset]="sunset"></app-widget-sun>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <app-widget-humidity [humility]="humility"></app-widget-humidity>
+        </ion-col>
+        <ion-col size="6">
           <app-widget-wind [windSpeed]="windSpeed"></app-widget-wind> 
         </ion-col>
       </ion-row>
