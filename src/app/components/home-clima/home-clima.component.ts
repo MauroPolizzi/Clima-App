@@ -5,6 +5,7 @@ import { finalize, forkJoin, map, Observable, timer } from 'rxjs';
 import { ClimaService } from 'src/app/services/clima.service';
 import { CountriesService } from '../../services/countries.service';
 import { DatesService } from 'src/app/services/dates.service';
+import { ButtonLocationComponent } from '../button-location/button-location.component';
 import { WidgetClimaComponent } from '../widget-clima/widget-clima.component';
 import { WidgetInfoGeneralComponent } from '../widget-info-general/widget-info-general.component';
 import { WidgetWeeklyForecastComponent } from '../widget-weekly-forecast/widget-weekly-forecast.component';
@@ -17,7 +18,7 @@ import { IRootObject_GetForCityAndContry } from 'src/app/interfaces/IClimaApp.in
   selector: 'app-home-clima',
   templateUrl: './home-clima.component.html',
   styleUrls: ['./home-clima.component.scss'],
-  imports: [CommonModule, WidgetClimaComponent, WidgetInfoGeneralComponent, WidgetWeeklyForecastComponent, WidgetSunComponent, WidgetHumidityComponent, WidgetWindComponent, IonContent, IonRefresher, IonRefresherContent, IonSpinner, IonGrid, IonRow, IonCol]
+  imports: [CommonModule, WidgetClimaComponent, WidgetInfoGeneralComponent, WidgetWeeklyForecastComponent, WidgetSunComponent, WidgetHumidityComponent, WidgetWindComponent, ButtonLocationComponent, IonContent, IonRefresher, IonRefresherContent, IonSpinner, IonGrid, IonRow, IonCol]
 })
 export class HomeClimaComponent  implements OnInit {
 

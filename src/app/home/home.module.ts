@@ -4,6 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
+import { ButtonLocationComponent } from '../components/button-location/button-location.component';
 import { HomePageRoutingModule } from './home-routing.module';
 import { HomeClimaComponent } from '../components/home-clima/home-clima.component';
 import { WidgetClimaComponent } from "../components/widget-clima/widget-clima.component";
@@ -22,7 +23,8 @@ import { WidgetSunComponent } from '../components/widget-sun/widget-sun.componen
     WidgetClimaComponent,
     WidgetWeeklyForecastComponent,
     WidgetInfoGeneralComponent,
-    WidgetSunComponent
+    WidgetSunComponent,
+    ButtonLocationComponent
 ],
   declarations: [HomePage]
 })
