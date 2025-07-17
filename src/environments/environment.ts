@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   
+  // API Open Weather Map
   /** End Point que devuelve datos basicos del pronostico para el dia actual, segun los parametros de q (nombre de ciudad separado por coma codigo ISO del pais). */
   API_ENDPOINT_GETFORCITYANDCOUNTRY: 'https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=',
   
@@ -15,6 +16,16 @@ export const environment = {
   API_KEY: '974a07281e5b6d25f5d9c7a55caa9743',
 
   URL_ICON: 'https://openweathermap.org/img/wn/',
+
+  // API de Rest Countries
+  /** End Point que devuelve todos los paises con su nombre (name), capital (capital) y bandera (flags). */
+  API_ENDPOINT_ALL_COUNTRIES: 'https://restcountries.com/v3.1/all?fields=name,capital,flags',
+
+  /** End Point que devuelve los paises coincidentes con el path params {name} (https://restcountries.com/v3.1/name/{name}). */
+  API_ENDPOINT_NAME_COUNTRY: 'https://restcountries.com/v3.1/name/',
+
+  /** End Point que devuelve el paise, segun su capital proporcionada con el path params {capital} (https://restcountries.com/v3.1/capital/{capital}). */
+  API_ENDPOINT_CAPITAL_COUNTRY: 'https://restcountries.com/v3.1/capital/'
 };
 
 /*

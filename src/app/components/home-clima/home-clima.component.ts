@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { finalize, forkJoin, map, Observable, timer } from 'rxjs';
 import { ClimaService } from 'src/app/services/clima.service';
+import { CountriesService } from '../../services/countries.service';
 import { DatesService } from 'src/app/services/dates.service';
 import { WidgetClimaComponent } from '../widget-clima/widget-clima.component';
 import { WidgetInfoGeneralComponent } from '../widget-info-general/widget-info-general.component';
@@ -40,7 +41,7 @@ export class HomeClimaComponent  implements OnInit {
   // Propiedad que pasaremos al widget-humility.component
   public humility: number = 0;
 
-  constructor(private climaService: ClimaService, private dateServie: DatesService) { }
+  constructor(private climaService: ClimaService, private dateServie: DatesService, private countriesService: CountriesService) { }
   
   ngOnInit() { this.loadWeatherData() }
 
