@@ -1,3 +1,5 @@
+//#region Interfaces de obj de API Open Weather MAP
+//#region API_ENDPOINT_GETFORCITYANDCOUNTRY
 /**
  * Interface que contiene todos los campos que devuelve el end point 'API_ENDPOINT_GETFORCITYANDCOUNTRY' (enviroment.ts), cuenta con parametros internos de la API de openweathermap 
 */
@@ -162,7 +164,9 @@ export interface ICoord {
   lat: number;
 }
 
+//#endregion
 
+//#region API_ENDPOINT_GETWEEKLYFORECAST
 /**
  * Interface que contiene todos los campos que devuelve el end point 'API_ENDPOINT_GETWEEKLYFORECAST' (enviroment.ts), cuenta con parametros internos de la API de openweathermap 
 */
@@ -196,3 +200,197 @@ export interface IList {
   sys: ISys;
   dt_txt: string;
 }
+//#endregion
+//#endregion
+
+//#region Interfaces de obj de API Country State City
+
+//#region API_COUNTRYSTATECITY_ENDPOINT_ALL_COUNTRIES
+export interface ICountry_CountryStateCity {
+  id: number;
+  name: string;
+  iso2: string;
+  iso3: string;
+  phonecode: string;
+  capital: string;
+  currency: string;
+  native: string;
+  emoji: string;
+}
+//#endregion
+
+//#region API_COUNTRYSTATECITY_ENDPOINT_CITIES_BY_STATE
+export interface ICity_CountryStateCity {
+  id: number;
+  name: string;
+  latitude: string;
+  longitude: string;
+}
+//#endregion
+
+//#region API_COUNTRYSTATECITY_ENDPOINT_STATES_BY_COUNTRY
+export interface IState_CountryStateCity {
+  id: number;
+  name: string;
+  iso2: string;
+}
+//#endregion
+
+//#endregion
+
+//#region Interfaces de obj de API Rest Country
+
+//#region API_RESTCOUNTRY_ENDPOINT_ALL_COUNTRIES
+export interface ICountry_RestCountry {
+  flags: IFlags_RestCountry;
+  name: IName_RestCountry;
+  capital: string[];
+}
+
+export interface IName_RestCountry {
+  common: string;
+  official: string;
+  nativeName: INativeName_RestCountry;
+}
+
+export interface INativeName_RestCountry {
+  ron: IRon_RestCountry;
+}
+
+export interface IRon_RestCountry {
+  official: string;
+  common: string;
+}
+
+export interface IFlags_RestCountry {
+  png: string;
+  svg: string;
+  alt: string;
+}
+//#endregion
+
+//#region API_RESTCOUNTRY_ENDPOINT_NAME_COUNTRY
+
+export interface ICountryDetail_RestCountry {
+  name: IName_RestCountry;
+  tld: string[];
+  cca2: string;
+  ccn3: string;
+  cioc: string;
+  independent: boolean;
+  status: string;
+  unMember: boolean;
+  //currencies: Currencies;
+  idd: Idd;
+  capital: string[];
+  altSpellings: string[];
+  region: string;
+  subregion: string;
+  languages: Languages;
+  latlng: number[];
+  landlocked: boolean;
+  borders: string[];
+  area: number;
+  demonyms: Demonyms;
+  cca3: string;
+  translations: Translations;
+  flag: string;
+  maps: Maps;
+  population: number;
+  gini: Gini;
+  fifa: string;
+  car: Car;
+  timezones: string[];
+  continents: string[];
+  flags: IFlags_RestCountry;
+  coatOfArms: CoatOfArms;
+  startOfWeek: string;
+  capitalInfo: CapitalInfo;
+  postalCode: PostalCode;
+}
+
+interface PostalCode {
+  format: string;
+  regex: string;
+}
+
+interface CapitalInfo {
+  latlng: number[];
+}
+
+interface CoatOfArms {
+  png: string;
+  svg: string;
+}
+
+interface Car {
+  signs: string[];
+  side: string;
+}
+
+interface Gini {
+  '2019': number;
+}
+
+interface Maps {
+  googleMaps: string;
+  openStreetMaps: string;
+}
+
+interface Translations {
+  ara: Grn;
+  bre: Grn;
+  ces: Grn;
+  cym: Grn;
+  deu: Grn;
+  est: Grn;
+  fin: Grn;
+  fra: Grn;
+  hrv: Grn;
+  hun: Grn;
+  ind: Grn;
+  ita: Grn;
+  jpn: Grn;
+  kor: Grn;
+  nld: Grn;
+  per: Grn;
+  pol: Grn;
+  por: Grn;
+  rus: Grn;
+  slk: Grn;
+  spa: Grn;
+  srp: Grn;
+  swe: Grn;
+  tur: Grn;
+  urd: Grn;
+  zho: Grn;
+}
+
+interface Demonyms {
+  eng: Eng;
+  fra: Eng;
+}
+
+interface Eng {
+  f: string;
+  m: string;
+}
+
+interface Languages {
+  grn: string;
+  spa: string;
+}
+
+interface Idd {
+  root: string;
+  suffixes: string[];
+}
+
+interface Grn {
+  official: string;
+  common: string;
+}
+
+//#endregion
+
+//#endregion

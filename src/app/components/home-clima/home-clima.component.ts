@@ -44,7 +44,12 @@ export class HomeClimaComponent  implements OnInit {
 
   constructor(private climaService: ClimaService, private dateServie: DatesService, private countriesService: CountriesService) { }
   
-  ngOnInit() { this.loadWeatherData() }
+  ngOnInit() { 
+    this.loadWeatherData(); 
+  
+    // Solicitud para testear method
+    //this.countriesService.getCountryByCapitalAPiRestCountry('Buenos Aires').subscribe(resp => console.log(resp[0])); 
+  }
 
   public loadWeatherData(event?: any): void {
     if (!event) this.loading = true;
