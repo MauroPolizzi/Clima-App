@@ -1,8 +1,7 @@
-<ion-fab horizontal="center" vertical="bottom" slot="fixed">
-  <ion-fab-button>
-    <ion-icon name="location-outline"></ion-icon>
-  </ion-fab-button>
-  <ion-fab-list>
-    <ion-searchbar showCancelButton="focus" class="custom"></ion-searchbar>
-  </ion-fab-list>
-</ion-fab>
+<ion-searchbar class="custom" placeholder="Search Country" (ionInput)="onSearchChange($event)"></ion-searchbar>
+
+<ion-list >
+  <ion-item *ngFor="let country of countryList">
+    <ion-label>{{ country.name.common }}</ion-label>
+  </ion-item>
+</ion-list>

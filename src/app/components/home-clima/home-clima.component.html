@@ -2,6 +2,9 @@
   <ion-refresher slot="fixed" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200" (ionRefresh)="loadWeatherData($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
+
+  <!--Button de location-->
+  <app-button-location></app-button-location>
   
   <!-- Mostrar loading inicial (solo la primera vez si no hay refresher) -->
   <!-- Spinner de carga inicial (mínimo 2 segundos) -->
@@ -42,8 +45,5 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-
-    <!--Button de location-->
-    <app-button-location></app-button-location>
   </ion-content>
 </ion-content>
