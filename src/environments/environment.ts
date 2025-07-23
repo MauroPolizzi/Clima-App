@@ -9,12 +9,16 @@ export const environment = {
   
   //#region API Open Weather Map
   /** End Point que devuelve datos basicos del pronostico para el dia actual, segun los parametros de q (nombre de ciudad separado por coma codigo ISO del pais). */
-  API_ENDPOINT_GETFORCITYANDCOUNTRY: 'https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=',
+  //'https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=' END POINT General,
+  // Aqui apuntamos directamente a San Miguel de Tucuman
+  API_ENDPOINT_GETFORCITYANDCOUNTRY: 'https://api.openweathermap.org/data/2.5/weather?lat=-26.82414000&lon=-65.22260000&appid=', 
   
   /** End Point para que devuelve una lista de pronosticos para las siguientes 5 dias cada 3 horas 
    * Con el params cnt definimos el limite de objetos dentro de la lista devuelta.
   */
-  API_ENDPOINT_GETWEEKLYFORECAST: 'https://pro.openweathermap.org/data/2.5/forecast?q=London&cnt=40&appid=',
+  //'https://pro.openweathermap.org/data/2.5/forecast?q=London&cnt=40&appid=' END POINT General
+ // Aqui apuntamos directamente a San Miguel de Tucuman
+  API_ENDPOINT_GETWEEKLYFORECAST: 'https://pro.openweathermap.org/data/2.5/forecast?lat=-26.82414000&lon=-65.22260000&cnt=40&appid=', 
   API_KEY: '974a07281e5b6d25f5d9c7a55caa9743',
 
   URL_ICON: 'https://openweathermap.org/img/wn/',
