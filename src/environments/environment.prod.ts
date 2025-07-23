@@ -30,4 +30,25 @@ export const environment = {
 //#endregion
 
   //#region API de Country State City
+  /** APi Key para Autorization de la Api Country State City. */
+  API_KEY_API_COUNTRYSTATECITY: 'Wk42UDUySU83WEhuZ0tDSjFLRmprUXAzeGdhenFNSElrVXN6WldxaA==',
+  
+  /** End Point que devuelve todos los paises. */
+  API_COUNTRYSTATECITY_ENDPOINT_ALL_COUNTRIES: 'https://api.countrystatecity.in/v1/countries',
+  
+  /** End Point que devulve las Cities de un determinado State (provincia/estado) y de un determinado Country. 
+   * Se debe especificar los siguientes path params: 
+   * @[ciso] = ISO2 Code of Country - Required	- String,
+   * @[siso] = ISO2 Code of State - Required	- String
+  */
+  API_COUNTRYSTATECITY_ENDPOINT_CITIES_BY_STATE: 'https://api.countrystatecity.in/v1/countries/[ciso]/states/[siso]/cities',
+
+  /** End Point que devuelve todos los States (provincias/estados) del Country. 
+   * Se debe especificar el siguiente path params:
+   * @[ciso] = ISO2 Code of Country - Required	- String
+  */
+  API_COUNTRYSTATECITY_ENDPOINT_STATES_BY_COUNTRY: 'https://api.countrystatecity.in/v1/countries/[ciso]/states'
+  //#endregion
+
+  //#region API de Country State City
 };
