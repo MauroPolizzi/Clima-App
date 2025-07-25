@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonGrid, IonCol, IonRow } from '@ionic/angular/standalone';
 import { NgFor } from '@angular/common';
 import { IList, IRootObject_GetWeeklyForecast } from 'src/app/interfaces/IClimaApp.interfaces';
@@ -12,11 +12,12 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./widget-weekly-forecast.component.scss'],
   imports: [IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonGrid, IonCol, IonRow, NgFor]
 })
-export class WidgetWeeklyForecastComponent implements OnInit {
+export class WidgetWeeklyForecastComponent implements OnInit, OnDestroy {
 
   public dates: string[] = [];
   public averanges: number[] = [];
   public descriptionIcon: string[] = [];
+  public screenWidth: number = window.innerWidth;
 
   constructor(private climaService: ClimaService, private datesService: DatesService) { 
 
@@ -27,7 +28,31 @@ export class WidgetWeeklyForecastComponent implements OnInit {
       });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.updateScreenWidth();
+    window.addEventListener('resize', this.updateScreenWidth.bind(this));
+  }
+  
+  ngOnDestroy() {
+    window.removeEventListener('resize', this.updateScreenWidth.bind(this));
+  }
+  
+  updateScreenWidth() {
+    this.screenWidth = window.innerWidth;
+  }
+  
+  getResponsiveForecastItems(): string[] {
+    const items = this.reurnDayAndTemperature();
+    
+    // Si el ancho de pantalla es muy pequeño (por ejemplo < 400px), mostrar solo 4
+    if (this.screenWidth < 400) {
+      return items.slice(0, 4);
+    }
+  
+    return items;
+}
+
+  
 
   public getDescriptionIcon(list: IList[]) : string[] {
 
